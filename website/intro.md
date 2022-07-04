@@ -1,11 +1,9 @@
-# Hi rocky
+# Welcome
+## Here is a little more about me.
 
-Hi HI This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+I work as an Economic Analyst at [WES](https://https://www.westernes.com/), a consulting firm specializing in housing, economic, and community development planning. I work on building out and maintaining data analysis pipelines, reporting, and data visualization. 
 
-Check out the content pages bundled with this sample book to see more.
+I am also Pursuing a Master of Science in Economics at Portland State University, focusing on quantitative economic analysis and urban economics.
 
 ```{tableofcontents}
 ```
