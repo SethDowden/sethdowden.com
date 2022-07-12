@@ -1,55 +1,35 @@
-# Markdown Files
+# Creating a continuous integration and deployment pipeline with Git Hooks
 
-Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
-in regular markdown files (`.md`), you'll write in the same flavor of markdown
-called **MyST Markdown**.
-This is a simple file to help you get started and show off some syntax.
+When creating my website, I encountered a problem where I would repeatedly manually deploy updates to my web server every time I made a minor change. This process was laborious and repetitive; there had to be a better way.
 
-## What is MyST?
+The solution was to host a bare git repository on my production web server and use BASH scripts in conjunction with git hooks to push my update to my Nginx http directory. 
 
-MyST stands for "Markedly Structured Text". It
-is a slight variation on a flavor of markdown called "CommonMark" markdown,
-with small syntax extensions to allow you to write **roles** and **directives**
-in the Sphinx ecosystem.
+While there are more commercial and feature-rich solutions such as GitLab, Jenkins, or even Github actions, they all were overkill for my use case. Using git hooks was the most straightforward and most elegant solution that fit my needs without any additional features I did not need. 
 
-For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
-
-## Sample Roles and Directivs
-
-Roles and directives are two of the most powerful tools in Jupyter Book. They
-are kind of like functions, but written in a markup language. They both
-serve a similar purpose, but **roles are written in one line**, whereas
-**directives span many lines**. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.
-
-Here is a "note" directive:
-
-```{note}
-Here is a note
+## 1: create a bare repository on your production server
+```
+$ > git init -bare repository.git
 ```
 
-It will be rendered in a special box when you build your book.
+## 2: create your Git hook
+Hooks are bash scrips located in the .git/hooks/ directory of your git repository, which executes during specific points in a commits execution. 
 
-Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
+for more information on creating and implementing git hooks, check out
+https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
 
+for documentation on git hooks, check out
+https://git-scm.com/docs/githooks
 
-## Citations
+$ > cd repository.git/hooks/
+$ > touch post-receive
 
-You can also cite references that are stored in a `bibtex` file. For example,
-the following syntax: `` {cite}`holdgraf_evidence_2014` `` will render like
-this: {cite}`holdgraf_evidence_2014`.
-
-Moreover, you can insert a bibliography into your page with this syntax:
-The `{bibliography}` directive must be used for all the `{cite}` roles to
-render properly.
-For example, if the references for your book are stored in `references.bib`,
-then the bibliography is inserted with:
-
+## 3: assing post-receive hook execute permissions 
+you may need to change the permissions on post-receive to allow it to be an executable.
+```
+/mnt/c/Users/Seth Dowden/Documents/GitHub/sethdowden.com main* ⇡
+❯
+$ > chmod +x post-receive
+```
 ```{bibliography}
 ```
 
-## Learn more
-
-This is just a simple starter to get you started.
-You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
