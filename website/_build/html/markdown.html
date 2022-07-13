@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Creating a continuous integration and deployment pipeline with Git Hooks &#8212; My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CI/CD With Git Hooks &#8212; My sample Title book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,11 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
     <link rel="prev" title="Welcome" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -98,7 +96,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/Head.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">My sample Title book</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -117,12 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Creating a continuous integration and deployment pipeline with Git Hooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown-notebooks.html">
-   Notebooks with MyST Markdown
+   CI/CD With Git Hooks
   </a>
  </li>
 </ul>
@@ -303,18 +296,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-bare-repository-on-your-production-server">
-   1: create a bare repository on your production server
+  <a class="reference internal nav-link" href="#continuous-integration-and-deployment-pipeline-with-git-hooks">
+   Continuous Integration and Deployment Pipeline With Git Hooks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-your-git-hook">
-   2: create your Git hook
+  <a class="reference internal nav-link" href="#initialize-bare-repository">
+   1. Initialize Bare Repository
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assing-post-receive-hook-execute-permissions">
-   3: assing post-receive hook execute permissions
+  <a class="reference internal nav-link" href="#create-git-hook">
+   2. Create Git Hook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-remote-repository">
+   3. Add Remote Repository
   </a>
  </li>
 </ul>
@@ -326,7 +324,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Creating a continuous integration and deployment pipeline with Git Hooks</h1>
+                <h1>CI/CD With Git Hooks</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -337,18 +335,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-a-bare-repository-on-your-production-server">
-   1: create a bare repository on your production server
+  <a class="reference internal nav-link" href="#continuous-integration-and-deployment-pipeline-with-git-hooks">
+   Continuous Integration and Deployment Pipeline With Git Hooks
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-your-git-hook">
-   2: create your Git hook
+  <a class="reference internal nav-link" href="#initialize-bare-repository">
+   1. Initialize Bare Repository
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assing-post-receive-hook-execute-permissions">
-   3: assing post-receive hook execute permissions
+  <a class="reference internal nav-link" href="#create-git-hook">
+   2. Create Git Hook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-remote-repository">
+   3. Add Remote Repository
   </a>
  </li>
 </ul>
@@ -361,37 +364,69 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="creating-a-continuous-integration-and-deployment-pipeline-with-git-hooks">
-<h1>Creating a continuous integration and deployment pipeline with Git Hooks<a class="headerlink" href="#creating-a-continuous-integration-and-deployment-pipeline-with-git-hooks" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ci-cd-with-git-hooks">
+<h1>CI/CD With Git Hooks<a class="headerlink" href="#ci-cd-with-git-hooks" title="Permalink to this headline">#</a></h1>
+<section id="continuous-integration-and-deployment-pipeline-with-git-hooks">
+<h2>Continuous Integration and Deployment Pipeline With Git Hooks<a class="headerlink" href="#continuous-integration-and-deployment-pipeline-with-git-hooks" title="Permalink to this headline">#</a></h2>
 <p>When creating my website, I encountered a problem where I would repeatedly manually deploy updates to my web server every time I made a minor change. This process was laborious and repetitive; there had to be a better way.</p>
 <p>The solution was to host a bare git repository on my production web server and use BASH scripts in conjunction with git hooks to push my update to my Nginx http directory.</p>
-<p>While there are more commercial and feature-rich solutions such as GitLab, Jenkins, or even Github actions, they all were overkill for my use case. Using git hooks was the most straightforward and most elegant solution that fit my needs without any additional features I did not need.</p>
-<div class="section" id="create-a-bare-repository-on-your-production-server">
-<h2>1: create a bare repository on your production server<a class="headerlink" href="#create-a-bare-repository-on-your-production-server" title="Permalink to this headline">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ &gt; git init -bare repository.git
+<p>While there are more commercial and feature-rich solutions such as <a class="reference external" href="https://about.gitlab.com/">GitLab</a>, <a class="reference external" href="https://www.jenkins.io/">Jenkins</a>, or even <a class="reference external" href="https://github.com/features/actions">Github Actions</a>, they all were overkill for my use case. Using git hooks was the most straightforward and elegant solution that fit my needs without any additional features I did not need.</p>
+</section>
+<section id="initialize-bare-repository">
+<h2>1. Initialize Bare Repository<a class="headerlink" href="#initialize-bare-repository" title="Permalink to this headline">#</a></h2>
+<p>Bare repositories are git repositories that do not have working directories, and they are often used as a remote repository for your code base for sharing and collaboration. An example of bare repositories would be a GitHub repo.</p>
+<p>To create a bare repository, first ssh into your production server and create a production repository directory which will be used to hold all of the repositories you run on your production server. Then create a bare repository. Bare repositories conventionally use the .git suffix.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>❯ ssh user@server.com
+❯ mikdr production &amp;&amp; cd production
+❯ git init -bare repository.git
 </pre></div>
 </div>
-</div>
-<div class="section" id="create-your-git-hook">
-<h2>2: create your Git hook<a class="headerlink" href="#create-your-git-hook" title="Permalink to this headline">#</a></h2>
+<p>for additional information on getting git set up on a server, check out the <a class="reference external" href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">documentation</a></p>
+</section>
+<section id="create-git-hook">
+<h2>2. Create Git Hook<a class="headerlink" href="#create-git-hook" title="Permalink to this headline">#</a></h2>
 <p>Hooks are bash scrips located in the .git/hooks/ directory of your git repository, which executes during specific points in a commits execution.</p>
-<p>for more information on creating and implementing git hooks, check out
-<a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks</a></p>
-<p>for documentation on git hooks, check out
-<a class="reference external" href="https://git-scm.com/docs/githooks">https://git-scm.com/docs/githooks</a></p>
-<p><span class="math notranslate nohighlight">\( &gt; cd repository.git/hooks/
-\)</span> &gt; touch post-receive</p>
-</div>
-<div class="section" id="assing-post-receive-hook-execute-permissions">
-<h2>3: assing post-receive hook execute permissions<a class="headerlink" href="#assing-post-receive-hook-execute-permissions" title="Permalink to this headline">#</a></h2>
-<p>you may need to change the permissions on post-receive to allow it to be an executable.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/mnt/c/Users/Seth Dowden/Documents/GitHub/sethdowden.com main* ⇡
-❯
-$ &gt; chmod +x post-receive
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>❯ cd repository.git/hooks/
+❯ vim post-receive
 </pre></div>
 </div>
-<span class="target" id="id1"></span></div>
+<p>below is an example of a post-receive script, credit to <a class="reference external" href="https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa">noel boss</a>, the original author of this code. I have made slight modifications to suit my use case.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nv">TARGET</span><span class="o">=</span><span class="s2">&quot;/home/production/www&quot;</span>
+<span class="nv">GIT_DIR</span><span class="o">=</span><span class="s2">&quot;/home/production/www.git&quot;</span>
+<span class="nv">BRANCH</span><span class="o">=</span><span class="s2">&quot;main&quot;</span>
+
+<span class="k">while</span> <span class="nb">read</span> oldrev newrev ref
+<span class="k">do</span>
+        <span class="c1"># only checking out the master (or whatever branch you would like to deploy)</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$ref</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;refs/heads/</span><span class="nv">$BRANCH</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span>
+        <span class="k">then</span>
+                <span class="nb">echo</span> <span class="s2">&quot;Ref </span><span class="nv">$ref</span><span class="s2"> received. Deploying </span><span class="si">${</span><span class="nv">BRANCH</span><span class="si">}</span><span class="s2"> branch to production...&quot;</span>
+                git --work-tree<span class="o">=</span><span class="nv">$TARGET</span> --git-dir<span class="o">=</span><span class="nv">$GIT_DIR</span> checkout -f <span class="nv">$BRANCH</span>
+        <span class="k">else</span>
+                <span class="nb">echo</span> <span class="s2">&quot;Ref </span><span class="nv">$ref</span><span class="s2"> received. Doing nothing: only the </span><span class="si">${</span><span class="nv">BRANCH</span><span class="si">}</span><span class="s2"> branch may be deployed on this server.&quot;</span>
+        <span class="k">fi</span>
+<span class="k">done</span>
+
+<span class="c1"># run additional bash script for validation, testing, and deployment below</span>
+
+<span class="c1"># copy html folder from my repository to my NGIN html folder</span>
+<span class="s1">&#39;cp&#39;</span> -rf /home/production/www/website/_build/html/* /home/docker/www/html
+</pre></div>
 </div>
+<p>For more information on git hooks, check out the <a class="reference external" href="https://git-scm.com/docs/githooks">documentation</a>, and <a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">examples</a>.</p>
+</section>
+<section id="add-remote-repository">
+<h2>3. Add Remote Repository<a class="headerlink" href="#add-remote-repository" title="Permalink to this headline">#</a></h2>
+<p>In your working directory on your local machine you can now add the remote repository we just created on the server by adding a remote repository.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> ❯ cd ~/working/repository
+ ❯ git remote add production user@server.com/production/repository.git
+ ❯ git push production main
+</pre></div>
+</div>
+<p>Now every time you push your working directory to the remote production repository, the post-receive bash script will run. You can modify the post-receive script to run validations, unit testing, and deployment.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -426,13 +461,6 @@ $ &gt; chmod +x post-receive
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Welcome</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="markdown-notebooks.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notebooks with MyST Markdown</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
