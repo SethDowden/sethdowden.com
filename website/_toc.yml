@@ -2,7 +2,6 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: Welcome
 chapters:
-- file: markdown
-- file: markdown-notebooks
+- file: Continuous_Deployment_With_Git

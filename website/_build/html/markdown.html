@@ -4,9 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>CI/CD With Git Hooks &#8212; My sample Title book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CI/CD With Git Hooks &#8212; Seth Dowden</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -96,7 +95,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/Head.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample Title book</h1>
+      <h1 class="site-logo" id="site-title">Seth Dowden</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -191,7 +190,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/SethDowden/flutter"
+        <a href="https://github.com/SethDowden/sethdowden.com"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -208,7 +207,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/SethDowden/flutter/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/SethDowden/sethdowden.com/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -364,15 +363,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="ci-cd-with-git-hooks">
+  <div class="tex2jax_ignore mathjax_ignore section" id="ci-cd-with-git-hooks">
 <h1>CI/CD With Git Hooks<a class="headerlink" href="#ci-cd-with-git-hooks" title="Permalink to this headline">#</a></h1>
-<section id="continuous-integration-and-deployment-pipeline-with-git-hooks">
+<div class="section" id="continuous-integration-and-deployment-pipeline-with-git-hooks">
 <h2>Continuous Integration and Deployment Pipeline With Git Hooks<a class="headerlink" href="#continuous-integration-and-deployment-pipeline-with-git-hooks" title="Permalink to this headline">#</a></h2>
 <p>When creating my website, I encountered a problem where I would repeatedly manually deploy updates to my web server every time I made a minor change. This process was laborious and repetitive; there had to be a better way.</p>
 <p>The solution was to host a bare git repository on my production web server and use BASH scripts in conjunction with git hooks to push my update to my Nginx http directory.</p>
 <p>While there are more commercial and feature-rich solutions such as <a class="reference external" href="https://about.gitlab.com/">GitLab</a>, <a class="reference external" href="https://www.jenkins.io/">Jenkins</a>, or even <a class="reference external" href="https://github.com/features/actions">Github Actions</a>, they all were overkill for my use case. Using git hooks was the most straightforward and elegant solution that fit my needs without any additional features I did not need.</p>
-</section>
-<section id="initialize-bare-repository">
+</div>
+<div class="section" id="initialize-bare-repository">
 <h2>1. Initialize Bare Repository<a class="headerlink" href="#initialize-bare-repository" title="Permalink to this headline">#</a></h2>
 <p>Bare repositories are git repositories that do not have working directories, and they are often used as a remote repository for your code base for sharing and collaboration. An example of bare repositories would be a GitHub repo.</p>
 <p>To create a bare repository, first ssh into your production server and create a production repository directory which will be used to hold all of the repositories you run on your production server. Then create a bare repository. Bare repositories conventionally use the .git suffix.</p>
@@ -382,8 +381,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>for additional information on getting git set up on a server, check out the <a class="reference external" href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">documentation</a></p>
-</section>
-<section id="create-git-hook">
+</div>
+<div class="section" id="create-git-hook">
 <h2>2. Create Git Hook<a class="headerlink" href="#create-git-hook" title="Permalink to this headline">#</a></h2>
 <p>Hooks are bash scrips located in the .git/hooks/ directory of your git repository, which executes during specific points in a commits execution.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>❯ cd repository.git/hooks/
@@ -415,8 +414,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>For more information on git hooks, check out the <a class="reference external" href="https://git-scm.com/docs/githooks">documentation</a>, and <a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">examples</a>.</p>
-</section>
-<section id="add-remote-repository">
+</div>
+<div class="section" id="add-remote-repository">
 <h2>3. Add Remote Repository<a class="headerlink" href="#add-remote-repository" title="Permalink to this headline">#</a></h2>
 <p>In your working directory on your local machine you can now add the remote repository we just created on the server by adding a remote repository.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> ❯ cd ~/working/repository
@@ -425,8 +424,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>Now every time you push your working directory to the remote production repository, the post-receive bash script will run. You can modify the post-receive script to run validations, unit testing, and deployment.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -469,7 +468,7 @@ title="Print to PDF"
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By The Jupyter Book Community<br/>
+    By Seth Dowden<br/>
   
       &copy; Copyright 2022.<br/>
 </p>
