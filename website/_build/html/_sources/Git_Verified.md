@@ -1,6 +1,6 @@
 # Git Verified
 
-## How to sign your commits with gpg and pinentry
+## How to sign your commits with GPG and pinentry
 
 When setting up my new development environment, I ran into a few issues figuring out how to automatically sign my git commits and tags with GitHub Desktop. This blog post is intended to be a self-referential guide to aid me in setting up my git and GPG environment to work seamlessly with GitHub Desktop; hopefully, it can help you too.
 
