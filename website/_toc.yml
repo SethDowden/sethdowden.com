@@ -5,3 +5,4 @@ format: jb-book
 root: Welcome
 chapters:
 - file: Continuous_Deployment_With_Git
+- file: Git_Verified

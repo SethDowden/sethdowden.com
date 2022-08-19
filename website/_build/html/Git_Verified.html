@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>CI/CD With Git Hooks &#8212; Seth Dowden</title>
+    <title>Git Verified &#8212; Seth Dowden</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Git Verified" href="Git_Verified.html" />
-    <link rel="prev" title="Welcome" href="Welcome.html" />
+    <link rel="prev" title="CI/CD With Git Hooks" href="Continuous_Deployment_With_Git.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -114,13 +113,13 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Continuous_Deployment_With_Git.html">
    CI/CD With Git Hooks
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Git_Verified.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Git Verified
   </a>
  </li>
@@ -214,7 +213,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/SethDowden/sethdowden.com/issues/new?title=Issue%20on%20page%20%2FContinuous_Deployment_With_Git.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/SethDowden/sethdowden.com/issues/new?title=Issue%20on%20page%20%2FGit_Verified.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -242,7 +241,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/Continuous_Deployment_With_Git.md"
+        <a href="_sources/Git_Verified.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -302,23 +301,43 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuous-integration-and-deployment-pipeline-with-git-hooks">
-   Continuous Integration and Deployment Pipeline With Git Hooks
+  <a class="reference internal nav-link" href="#how-to-sign-your-commits-with-gpg-and-pinentry">
+   How to sign your commits with gpg and pinentry
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#initialize-bare-repository">
-   1. Initialize Bare Repository
+  <a class="reference internal nav-link" href="#install-dependencies">
+   Install Dependencies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-git-hook">
-   2. Create Git Hook
+  <a class="reference internal nav-link" href="#generate-gpg-key">
+   Generate GPG Key
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#add-remote-repository">
-   3. Add Remote Repository
+  <a class="reference internal nav-link" href="#import-gpg-key">
+   Import GPG Key
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-config">
+   Git Config
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gpg-config">
+   GPG Config
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-your-gpg-key-to-github">
+   Add your GPG key to GitHub
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aditional-resources">
+   Aditional Resources
   </a>
  </li>
 </ul>
@@ -330,7 +349,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>CI/CD With Git Hooks</h1>
+                <h1>Git Verified</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -341,23 +360,43 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuous-integration-and-deployment-pipeline-with-git-hooks">
-   Continuous Integration and Deployment Pipeline With Git Hooks
+  <a class="reference internal nav-link" href="#how-to-sign-your-commits-with-gpg-and-pinentry">
+   How to sign your commits with gpg and pinentry
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#initialize-bare-repository">
-   1. Initialize Bare Repository
+  <a class="reference internal nav-link" href="#install-dependencies">
+   Install Dependencies
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#create-git-hook">
-   2. Create Git Hook
+  <a class="reference internal nav-link" href="#generate-gpg-key">
+   Generate GPG Key
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#add-remote-repository">
-   3. Add Remote Repository
+  <a class="reference internal nav-link" href="#import-gpg-key">
+   Import GPG Key
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-config">
+   Git Config
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gpg-config">
+   GPG Config
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#add-your-gpg-key-to-github">
+   Add your GPG key to GitHub
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aditional-resources">
+   Aditional Resources
   </a>
  </li>
 </ul>
@@ -370,67 +409,101 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="ci-cd-with-git-hooks">
-<h1>CI/CD With Git Hooks<a class="headerlink" href="#ci-cd-with-git-hooks" title="Permalink to this headline">#</a></h1>
-<section id="continuous-integration-and-deployment-pipeline-with-git-hooks">
-<h2>Continuous Integration and Deployment Pipeline With Git Hooks<a class="headerlink" href="#continuous-integration-and-deployment-pipeline-with-git-hooks" title="Permalink to this headline">#</a></h2>
-<p>When creating my website, I encountered a problem where I would repeatedly manually deploy updates to my web server every time I made a minor change. This process was laborious and repetitive; there had to be a better way.</p>
-<p>The solution was to host a bare git repository on my production web server and use BASH scripts in conjunction with git hooks to push my update to my Nginx http directory.</p>
-<p>While there are more commercial and feature-rich solutions such as <a class="reference external" href="https://about.gitlab.com/">GitLab</a>, <a class="reference external" href="https://www.jenkins.io/">Jenkins</a>, or even <a class="reference external" href="https://github.com/features/actions">Github Actions</a>, they all were overkill for my use case. Using git hooks was the most straightforward and elegant solution that fit my needs without any additional features I did not need.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="git-verified">
+<h1>Git Verified<a class="headerlink" href="#git-verified" title="Permalink to this headline">#</a></h1>
+<section id="how-to-sign-your-commits-with-gpg-and-pinentry">
+<h2>How to sign your commits with gpg and pinentry<a class="headerlink" href="#how-to-sign-your-commits-with-gpg-and-pinentry" title="Permalink to this headline">#</a></h2>
+<p>When setting up my new development environment, I ran into a few issues figuring out how to automatically sign my git commits and tags with GitHub Desktop. This blog post is intended to be a self-referential guide to aid me in setting up my git and GPG environment to work seamlessly with GitHub Desktop; hopefully, it can help you too.</p>
 </section>
-<section id="initialize-bare-repository">
-<h2>1. Initialize Bare Repository<a class="headerlink" href="#initialize-bare-repository" title="Permalink to this headline">#</a></h2>
-<p>Bare repositories are git repositories that do not have working directories, and they are often used as a remote repository for your code base for sharing and collaboration. An example of bare repositories would be a GitHub repo.</p>
-<p>To create a bare repository, first ssh into your production server and create a production repository directory which will be used to hold all of the repositories you run on your production server. Then create a bare repository. Bare repositories conventionally use the .git suffix.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>❯ ssh user@server.com
-❯ mikdr production &amp;&amp; cd production
-❯ git init -bare repository.git
+<section id="install-dependencies">
+<h2>Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">#</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯ brew install git gpg pinentry-mac
+❯ brew install --cask github
 </pre></div>
 </div>
-<p>for additional information on getting git set up on a server, check out the <a class="reference external" href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">documentation</a></p>
 </section>
-<section id="create-git-hook">
-<h2>2. Create Git Hook<a class="headerlink" href="#create-git-hook" title="Permalink to this headline">#</a></h2>
-<p>Hooks are bash scrips located in the .git/hooks/ directory of your git repository, which executes during specific points in a commits execution.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>❯ cd repository.git/hooks/
-❯ vim post-receive
+<section id="generate-gpg-key">
+<h2>Generate GPG Key<a class="headerlink" href="#generate-gpg-key" title="Permalink to this headline">#</a></h2>
+<p>If you don’t already have a GPG key, you first need to generate one; you can do so by running the command below and following the prompts.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯ gpg --full-generate-key
 </pre></div>
 </div>
-<p>below is an example of a post-receive script, credit to <a class="reference external" href="https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa">noel boss</a>, the original author of this code. I have made slight modifications to suit my use case.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="nv">TARGET</span><span class="o">=</span><span class="s2">&quot;/home/production/www&quot;</span>
-<span class="nv">GIT_DIR</span><span class="o">=</span><span class="s2">&quot;/home/production/www.git&quot;</span>
-<span class="nv">BRANCH</span><span class="o">=</span><span class="s2">&quot;main&quot;</span>
-
-<span class="k">while</span> <span class="nb">read</span> oldrev newrev ref
-<span class="k">do</span>
-        <span class="c1"># only checking out the master (or whatever branch you would like to deploy)</span>
-        <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$ref</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;refs/heads/</span><span class="nv">$BRANCH</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span>
-        <span class="k">then</span>
-                <span class="nb">echo</span> <span class="s2">&quot;Ref </span><span class="nv">$ref</span><span class="s2"> received. Deploying </span><span class="si">${</span><span class="nv">BRANCH</span><span class="si">}</span><span class="s2"> branch to production...&quot;</span>
-                git --work-tree<span class="o">=</span><span class="nv">$TARGET</span> --git-dir<span class="o">=</span><span class="nv">$GIT_DIR</span> checkout -f <span class="nv">$BRANCH</span>
-        <span class="k">else</span>
-                <span class="nb">echo</span> <span class="s2">&quot;Ref </span><span class="nv">$ref</span><span class="s2"> received. Doing nothing: only the </span><span class="si">${</span><span class="nv">BRANCH</span><span class="si">}</span><span class="s2"> branch may be deployed on this server.&quot;</span>
-        <span class="k">fi</span>
-<span class="k">done</span>
-
-<span class="c1"># run additional bash script for validation, testing, and deployment below</span>
-
-<span class="c1"># copy html folder from my repository to my NGIN html folder</span>
-<span class="s1">&#39;cp&#39;</span> -rf /home/production/www/website/_build/html/* /home/docker/www/html
-</pre></div>
-</div>
-<p>For more information on git hooks, check out the <a class="reference external" href="https://git-scm.com/docs/githooks">documentation</a>, and <a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">examples</a>.</p>
+<p>Additonal documentation on GPG key generation can be found <a class="reference external" href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key">here</a></p>
 </section>
-<section id="add-remote-repository">
-<h2>3. Add Remote Repository<a class="headerlink" href="#add-remote-repository" title="Permalink to this headline">#</a></h2>
-<p>In your working directory on your local machine you can now add the remote repository we just created on the server by adding a remote repository.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> ❯ cd ~/working/repository
- ❯ git remote add production user@server.com/production/repository.git
- ❯ git push production main
+<section id="import-gpg-key">
+<h2>Import GPG Key<a class="headerlink" href="#import-gpg-key" title="Permalink to this headline">#</a></h2>
+<p>If you already have a GPG Key that you want to migrate to a new system, you can export your private keys and import them to a different computer.</p>
+<p>Backup:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯ gpg --export-secret-keys --armor YOUR_GPG_KEY_EMAIL &gt; PATH_TO_BACKUP_DIRECTORY
+❯ gpg --export-ownertrust &gt; PATH_TO_BACKUP_DIRECTORY
 </pre></div>
 </div>
-<p>Now every time you push your working directory to the remote production repository, the post-receive bash script will run. You can modify the post-receive script to run validations, unit testing, and deployment.</p>
+<p>Restore:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯ gpg --export-secret-keys --armor YOUR_GPG_KEY_EMAIL &gt; PATH_TO_SECRET_KEYS
+❯ gpg --export-ownertrust &gt; PATH_TO_BACKUP_DIRECTORY
+</pre></div>
+</div>
+</section>
+<section id="git-config">
+<h2>Git Config<a class="headerlink" href="#git-config" title="Permalink to this headline">#</a></h2>
+<p>Configuring git to sign all commits and tags.</p>
+<p>Identify where GPG is installed.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯ where gpg
+/opt/homebrew/bin/gpg
+</pre></div>
+</div>
+<p>Add the following lines to your .gitconfig.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># ~/.gitconfig</span>
+<span class="o">[</span>user<span class="o">]</span>
+        <span class="c1"># name and email must be the same as yoru GPG key</span>
+        <span class="nv">name</span> <span class="o">=</span> YOUR_NAME
+        <span class="nv">email</span> <span class="o">=</span> YOUR_EMAIL
+        <span class="nv">signingkey</span> <span class="o">=</span> YOUR_GPG_KEY
+<span class="o">[</span>gpg<span class="o">]</span>
+        <span class="nv">program</span> <span class="o">=</span> PATH_TO_GPG
+<span class="o">[</span>commit<span class="o">]</span>
+        <span class="nv">gpgsign</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="o">[</span>tag<span class="o">]</span>
+        <span class="nv">gpgsign</span> <span class="o">=</span> <span class="nb">true</span>
+</pre></div>
+</div>
+</section>
+<section id="gpg-config">
+<h2>GPG Config<a class="headerlink" href="#gpg-config" title="Permalink to this headline">#</a></h2>
+<p>set penentry-mac as</p>
+<p>In your gpg-agent config file, define penentry-mac as your pinentry program.</p>
+<p>Based on your risk tolerance, you can cashe your GPG key pair to avoid repeatedly typing your passphrase when performing multiple commits.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># ~/.gnupg/gpg-agent.conf</span>
+
+pinentry-program PATH_TO_PINENTRY
+
+default-cache-ttl CASHE_TIME_IN_SECONDS
+max-cache-ttl CASHE_TIME_IN_SECONDS
+</pre></div>
+</div>
+<p>Restart the GPG agent to load the config file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯ gpgconf --kill gpg-agent
+</pre></div>
+</div>
+</section>
+<section id="add-your-gpg-key-to-github">
+<h2>Add your GPG key to GitHub<a class="headerlink" href="#add-your-gpg-key-to-github" title="Permalink to this headline">#</a></h2>
+<p>In order to get that sweet, sweet, green verified check mark beside your commits on GitHub. You need to export your public key and add it to your keychain in <b><a class="reference external" href="https://github.com/settings/keys">GitHub Settings</a></b>.</p>
+<p>you can copy your public key to your clipboard with the following command on macs.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯ gpg --armor --export YOUR_GPG_EMAIL <span class="p">|</span> pbcopy
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>GitHub will not let you use a GPG key which dose not have the same email as your GitHub account!</p>
+</div>
+</section>
+<section id="aditional-resources">
+<h2>Aditional Resources<a class="headerlink" href="#aditional-resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gnupg.org/gph/en/manual.html">The GNU Privacy Handbook</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification">Github Docs</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -461,19 +534,12 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Welcome.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Continuous_Deployment_With_Git.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Welcome</p>
+            <p class="prev-next-title">CI/CD With Git Hooks</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="Git_Verified.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Git Verified</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
