@@ -1,8 +1,0 @@
-# Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
-format: jb-book
-root: Welcome
-chapters:
-- file: Continuous_Deployment_With_Git
-- file: Git_Verified
