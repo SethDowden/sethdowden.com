@@ -1,0 +1,9 @@
+/* Hide the vertical scrollbar for bd-sidebar-primary with classes bd-sidebar and noprint */
+.bd-sidebar-primary.bd-sidebar.noprint {
+    overflow-y: hidden;
+  }
+  
+  /* Hide the horizontal scrollbar for bd-sidebar-primary with classes bd-sidebar and noprint */
+  .bd-sidebar-primary.bd-sidebar.noprint {
+    overflow-x: hidden;
+  }

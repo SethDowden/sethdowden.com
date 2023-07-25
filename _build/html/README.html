@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -142,6 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
     
     <img src="_static/Head.png" class="logo__image only-light" alt="Logo image"/>
     <script>document.write(`<img src="_static/Head.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+<div class="sidebar-primary-item" style="margin-top: -2rem;">
+<a class="navbar-brand logo" href="#">
+    <p class="title logo__title" style="font-size: 2rem;">Seth Dowden</p>
+</a>
+</div>
   
   
 </a></div>
@@ -155,7 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Blog Posts</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Continuous_Deployment_With_Git.html">CI/CD With Git Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Git_Verified.html">Git Verified</a></li>
 
@@ -329,7 +336,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -345,6 +354,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">ToDo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blog-posts">Blog Posts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#website-improvements">Website Improvements</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -356,7 +377,26 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sethdowden-com">
 <h1><a class="reference external" href="http://sethdowden.com">sethdowden.com</a><a class="headerlink" href="#sethdowden-com" title="Permalink to this heading">#</a></h1>
-<p>My peronsal Website</p>
+<p>This is my personal website, where I will be posting about my projects, photography, economics and other things that interest me.</p>
+<section id="todo">
+<h2>ToDo<a class="headerlink" href="#todo" title="Permalink to this heading">#</a></h2>
+<section id="blog-posts">
+<h3>Blog Posts<a class="headerlink" href="#blog-posts" title="Permalink to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Creating my personal website: <a class="reference external" href="http://sethdowden.com">sethdowden.com</a></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Setting up my photography blog: 503.pics</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Stagit project</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Docker cronjob for data science projects</p></li>
+</ul>
+</section>
+<section id="website-improvements">
+<h3>Website Improvements<a class="headerlink" href="#website-improvements" title="Permalink to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Fix table of contents for Blog Posts and Welcome page</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plan transition to new blogging platform Hugo?</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -400,6 +440,24 @@ document.write(`
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">ToDo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blog-posts">Blog Posts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#website-improvements">Website Improvements</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -418,7 +476,7 @@ By Seth Dowden
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

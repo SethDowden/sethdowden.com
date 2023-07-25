@@ -3,6 +3,11 @@
 
 format: jb-book
 root: Welcome
-chapters:
-- file: Continuous_Deployment_With_Git
-- file: Git_Verified
+parts:
+- caption: Blog Posts
+  chapters:
+  - file: Continuous_Deployment_With_Git
+  - file: Git_Verified
+
+#hide Welcome page in toc 
+# add a title section toc using 
