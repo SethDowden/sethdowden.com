@@ -34,5 +34,6 @@ html:
 sphinx:
   config:
     html_baseurl: 'https://sethdowden.com/'
+    bibtex_reference_style: author_year  # or label, super, \supercite
   extra_extensions:
     - sphinx_sitemap

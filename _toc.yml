@@ -6,6 +6,7 @@ root: Welcome
 parts:
   - caption: Blog Posts
     chapters:
+      - file: Jane_Street_Puzzle
       - file: Continuous_Deployment_With_Git
       - file: Git_Verified
 

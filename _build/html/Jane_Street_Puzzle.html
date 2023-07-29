@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>CI/CD With Git Hooks &#8212; Seth Dowden</title>
+    <title>Jane Street Grid Puzzle &#8212; Seth Dowden</title>
   
   
   
@@ -62,12 +62,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Continuous_Deployment_With_Git';</script>
-    <link rel="canonical" href="https://sethdowden.com/Continuous_Deployment_With_Git.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Jane_Street_Puzzle';</script>
+    <link rel="canonical" href="https://sethdowden.com/Jane_Street_Puzzle.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Git Verified" href="Git_Verified.html" />
-    <link rel="prev" title="Jane Street Grid Puzzle" href="Jane_Street_Puzzle.html" />
+    <link rel="next" title="CI/CD With Git Hooks" href="Continuous_Deployment_With_Git.html" />
+    <link rel="prev" title="Welcome 👋" href="Welcome.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,8 +167,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Blog Posts</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Jane_Street_Puzzle.html">Jane Street Grid Puzzle</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">CI/CD With Git Hooks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jane Street Grid Puzzle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Continuous_Deployment_With_Git.html">CI/CD With Git Hooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Git_Verified.html">Git Verified</a></li>
 </ul>
 
@@ -239,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/SethDowden/sethdowden.com/issues/new?title=Issue%20on%20page%20%2FContinuous_Deployment_With_Git.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/SethDowden/sethdowden.com/issues/new?title=Issue%20on%20page%20%2FJane_Street_Puzzle.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/Continuous_Deployment_With_Git.md" target="_blank"
+      <li><a href="_sources/Jane_Street_Puzzle.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +353,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>CI/CD With Git Hooks</h1>
+    <h1>Jane Street Grid Puzzle</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -361,10 +363,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-and-deployment-pipeline-with-git-hooks">Continuous Integration and Deployment Pipeline With Git Hooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-bare-repository">1. Initialize Bare Repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-git-hook">2. Create Git Hook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-remote-repository">3. Add Remote Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choco-banana">Choco Banana</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-puzzle-instructions">Grid Puzzle Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle">Puzzle</a></li>
 </ul>
             </nav>
         </div>
@@ -376,70 +377,200 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ci-cd-with-git-hooks">
-<h1>CI/CD With Git Hooks<a class="headerlink" href="#ci-cd-with-git-hooks" title="Permalink to this heading">#</a></h1>
-<section id="continuous-integration-and-deployment-pipeline-with-git-hooks">
-<h2>Continuous Integration and Deployment Pipeline With Git Hooks<a class="headerlink" href="#continuous-integration-and-deployment-pipeline-with-git-hooks" title="Permalink to this heading">#</a></h2>
-<p>In the process of building my website, I was repeatedly faced with the tedious task of manually deploying updates to my web server each time a minor change was introduced. I knew there had to be a better way to automate this process.</p>
-<p>I found my solution in hosting a bare git repository on my production web server and leveraging BASH scripts along with git hooks to expedite updates to my Nginx www directory.</p>
-<p>While there are more commercial and feature-rich solutions such as <a class="reference external" href="https://about.gitlab.com/">GitLab</a>, <a class="reference external" href="https://www.jenkins.io/">Jenkins</a>, or even <a class="reference external" href="https://github.com/features/actions">Github Actions</a>, they all were overkill for my use case. Using git hooks was the most straightforward and elegant solution that fit my needs without any additional features I did not need.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="jane-street-grid-puzzle">
+<h1>Jane Street Grid Puzzle<a class="headerlink" href="#jane-street-grid-puzzle" title="Permalink to this heading">#</a></h1>
+<section id="choco-banana">
+<h2>Choco Banana<a class="headerlink" href="#choco-banana" title="Permalink to this heading">#</a></h2>
+<p>I randomly came across <a class="reference external" href="https://www.janestreet.com/puzzles/current-puzzle/">this puzzle</a> yesterday, and I got stuck in. So far, I have been unable to solve it.</p>
+<p>at first, I thought, “Oh, I could write a script to brute force this.” I was wrong. Very wrong. There are <span class="math notranslate nohighlight">\(2^{240}\)</span> possible states of the grid. To randomly shade cells, it would take several times the universe’s lifespan on a supercomputer to find a solution without first reducing the search space. So, I guess I need to find a more intelligent way to solve the puzzle.</p>
+<p>Moving forward, I put together an interactive version of the puzzle to let me play around with grid states and help me think about potential solutions to the problem. Hopefully, I can reduce the search space to something more manageable, or possibly find an analytical solution.</p>
+<p>I’ll keep this post updated with my ongoing progress on this puzzle. If you have any ideas, or if you find this interactive version of the puzzle helpful, let me know.</p>
 </section>
-<section id="initialize-bare-repository">
-<h2>1. Initialize Bare Repository<a class="headerlink" href="#initialize-bare-repository" title="Permalink to this heading">#</a></h2>
-<p>Bare repositories are git repositories that do not have working directories, and they are often used as a remote repository for your code base for sharing and collaboration. An example of a bare repository would be a GitHub repo.</p>
-<p>To create a bare repository, first, ssh into your production server and create a production repository directory which will be used to hold all of the repositories you run on your production server. Then create a bare repository. Bare repositories conventionally use the .git suffix.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯<span class="w"> </span>ssh<span class="w"> </span>user@server.com
-❯<span class="w"> </span>mikdr<span class="w"> </span>production<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>production
-❯<span class="w"> </span>git<span class="w"> </span>init<span class="w"> </span>-bare<span class="w"> </span>repository.git
-</pre></div>
-</div>
-<p>Now you have a bare repository on your production server. You can now clone this repository to your local machine and push your working directory to the remote repository.</p>
-<p>for additional information on getting git set up on a server, check out the <a class="reference external" href="https://git-scm.com/book/en/v2/Git-on-the-Server-Getting-Git-on-a-Server">documentation</a></p>
+<section id="grid-puzzle-instructions">
+<h2>Grid Puzzle Instructions<a class="headerlink" href="#grid-puzzle-instructions" title="Permalink to this heading">#</a></h2>
+<p>If we shade a subset of the cells in the above grid, we partition the cells into orthogonally connected regions of shaded and unshaded cells. The goal of this puzzle is to shade the cells so that:</p>
+<ul class="simple">
+<li><p>All regions of shaded cells are rectangular,</p></li>
+<li><p>All regions of unshaded cells are not rectangular, and</p></li>
+<li><p>All number clues in the grid give the size of the region (shaded or unshaded) that the clue is in.</p></li>
+</ul>
+<p>The answer to this puzzle is the product of the number of unshaded cells in each row <span id="id1">[<a class="reference internal" href="#id3" title="Choco banana. 2023. URL: https://www.janestreet.com/puzzles/current-puzzle/."><em>Choco Banana</em>, 2023</a>]</span></p>
 </section>
-<section id="create-git-hook">
-<h2>2. Create Git Hook<a class="headerlink" href="#create-git-hook" title="Permalink to this heading">#</a></h2>
-<p>Hooks are bash scripts located in the .git/hooks/ directory of your git repository, which executes during specific points in a commits execution. There are two types of hooks: client-side and server-side. Client-side hooks are triggered by committing and merging, while server-side hooks are triggered by network operations such as receiving pushed commits. We can use the server-side hooks to automate our deployment process.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>❯<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>repository.git/hooks/
-❯<span class="w"> </span>vim<span class="w"> </span>post-receive
-</pre></div>
+<section id="puzzle">
+<h2>Puzzle<a class="headerlink" href="#puzzle" title="Permalink to this heading">#</a></h2>
+<div class="app">
+    <div id="grid" class="grid"></div>
+    <button id="clear">Clear</button>
 </div>
-<p>below is an example of a post-receive script.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="nv">TARGET</span><span class="o">=</span><span class="s2">&quot;/home/production/www&quot;</span>
-<span class="nv">GIT_DIR</span><span class="o">=</span><span class="s2">&quot;/home/production/www.git&quot;</span>
-<span class="nv">BRANCH</span><span class="o">=</span><span class="s2">&quot;main&quot;</span>
+<ul>
+<li><div id="blackCount">Black cells: 0</div>
+</li>
+<li><div id="whiteCount">White cells: 240</div>
+</li>
+<li><div id="oddCount">Odd numbers: 0</div>
+</li>
+<li><div id="evenCount">Even numbers: 0</div>
+</li>
+</ul>
+<style>
+.grid {
+    user-select: none;
+    color: black;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-gap: 1px;
+    width: 100%;
+}
 
-<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>oldrev<span class="w"> </span>newrev<span class="w"> </span>ref
-<span class="k">do</span>
-<span class="w">        </span><span class="c1"># only checking out the master (or whatever branch you would like to deploy)</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ref</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;refs/heads/</span><span class="nv">$BRANCH</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span>
-<span class="w">        </span><span class="k">then</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ref </span><span class="nv">$ref</span><span class="s2"> received. Deploying </span><span class="si">${</span><span class="nv">BRANCH</span><span class="si">}</span><span class="s2"> branch to production...&quot;</span>
-<span class="w">                </span>git<span class="w"> </span>--work-tree<span class="o">=</span><span class="nv">$TARGET</span><span class="w"> </span>--git-dir<span class="o">=</span><span class="nv">$GIT_DIR</span><span class="w"> </span>checkout<span class="w"> </span>-f<span class="w"> </span><span class="nv">$BRANCH</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ref </span><span class="nv">$ref</span><span class="s2"> received. Doing nothing: only the </span><span class="si">${</span><span class="nv">BRANCH</span><span class="si">}</span><span class="s2"> branch may be deployed on this server.&quot;</span>
-<span class="w">        </span><span class="k">fi</span>
-<span class="k">done</span>
+.cell {
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 1;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+}
 
-<span class="c1"># run additional bash script for validation, testing, and deployment below</span>
+    .black {
+        background-color: black;
+        color: white;
+    }
+    #clear {
+        display: block;
+        width: 100px;
+        height: 30px;
+        margin: 20px auto;
+        background-color: #579aca;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 20px; /* Rounded corners */
+    }
+    #clear:hover {
+    background-color: #4088a6; /* Darker shade of blue when hovered over */
+    }
+</style>
+ <script>
+        var isMouseDown = false;
+        var newColor = "";
+        var blackCount = 0;
+        var whiteCount = 240;
+        var oddCount = 0;
+        var evenCount = 0;
 
-<span class="c1"># copy html folder from my repository to my NGIN html folder</span>
-<span class="s1">&#39;cp&#39;</span><span class="w"> </span>-rf<span class="w"> </span>/home/production/www/website/_build/html/*<span class="w"> </span>/home/docker/www/html
-</pre></div>
+        // Data from the CSV file
+        var data = [[6.0,6.0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6.0,6.0],
+                    [6.0,null,null,null,null,null,null,null,null,8.0,12.0,null,null,null,null,null,null,null,null,6.0],
+                    [null,null,null,10.0,10.0,null,null,null,null,null,null,null,null,null,null,12.0,12.0,null,null,null],
+                    [null,null,null,10.0,null,null,10.0,10.0,null,null,null,null,11.0,11.0,null,null,4.0,null,null,null],
+                    [null,null,null,null,null,null,10.0,null,null,null,null,null,null,11.0,null,null,null,null,null,null],
+                    [null,15,null,null,null,null,null,null,null,3.0,4.0,null,null,null,null,null,null,null,3.0,null],
+                    [null,3,null,null,null,null,null,null,null,6.0,5.0,null,null,null,null,null,null,null,12.0,null],
+                    [null,null,null,null,null,null,9.0,null,null,null,null,null,null,8.0,null,null,null,null,null,null],
+                    [null,null,null,15.0,null,null,9.0,9.0,null,null,null,null,8.0,8.0,null,null,8.0,null,null,null],
+                    [null,null,null,1.0,9.0,null,null,null,null,null,null,null,null,null,null,1.0,7.0,null,null,null],
+                    [4.0,null,null,null,null,null,null,null,null,12.0,8.0,null,null,null,null,null,null,null,null,4.0],
+                    [4.0,4.0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4.0,4.0]]
+for (let i = 0; i < 240; i++) {
+    let cell = document.createElement('div');
+    cell.className = 'cell';
+    let savedState = JSON.parse(localStorage.getItem('gridState'));
+    if(savedState && savedState[i] === 'black') {
+        cell.classList.add('black');
+        blackCount++;
+        whiteCount--;
+    }
+    let row = Math.floor(i / 20);
+    let col = i % 20;
+    if(data[row][col] !== null) {
+        cell.textContent = data[row][col];
+        if(data[row][col] % 2 === 0) {
+            evenCount++;
+        } else {
+            oddCount++;
+        }
+    }
+    document.getElementById('grid').appendChild(cell);
+}
+document.getElementById('oddCount').textContent = "Odd numbers: " + oddCount;
+document.getElementById('evenCount').textContent = "Even numbers: " + evenCount;
+
+document.querySelectorAll('.cell').forEach((cell, i) => {
+    cell.addEventListener('mousedown', function(e) {
+        isMouseDown = true;
+        newColor = e.target.classList.contains('black') ? "" : "black";
+        cell.classList.toggle('black');
+        if(newColor === "black") {
+            blackCount++;
+            whiteCount--;
+        } else {
+            blackCount--;
+            whiteCount++;
+        }
+        document.getElementById('blackCount').textContent = "Black cells: " + blackCount;
+        document.getElementById('whiteCount').textContent = "White cells: " + whiteCount;
+        let state = Array.from(document.querySelectorAll('.cell')).map(cell => cell.classList.contains('black') ? 'black' : 'white');
+        localStorage.setItem('gridState', JSON.stringify(state));
+    });
+
+    cell.addEventListener('mouseover', function() {
+        if(isMouseDown) {
+            var wasBlack = cell.classList.contains('black');
+            cell.className = 'cell ' + newColor;
+            var isBlack = cell.classList.contains('black');
+            if(wasBlack != isBlack) {
+                if(isBlack) {
+                    blackCount++;
+                    whiteCount--;
+                } else {
+                    blackCount--;
+                    whiteCount++;
+                }
+                document.getElementById('blackCount').textContent = "Black cells: " + blackCount;
+                document.getElementById('whiteCount').textContent = "White cells: " + whiteCount;
+                let state = Array.from(document.querySelectorAll('.cell')).map(cell => cell.classList.contains('black') ? 'black' : 'white');
+                localStorage.setItem('gridState', JSON.stringify(state));
+            }
+        }
+    });
+    cell.addEventListener('mouseup', function() {
+        isMouseDown = false;
+    });
+});
+
+document.addEventListener('mouseup', function() {
+    isMouseDown = false;
+});
+        document.getElementById('clear').addEventListener('click', function() {
+            document.querySelectorAll('.cell').forEach((cell, i) => {
+                cell.className = 'cell';
+            });
+
+            localStorage.removeItem('gridState');
+
+            blackCount = 0;
+            whiteCount = 240;
+            document.getElementById('blackCount').textContent = "Black cells: " + blackCount;
+            document.getElementById('whiteCount').textContent = "White cells: " + whiteCount;
+        });
+    </script>
+<p><br> The state of the grid is saved in the browser’s local storage, so your progress will be waiting for you when you come back.</p>
+<div class="docutils container" id="id2">
+<dl class="citation">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Choco banana. 2023. URL: <a class="reference external" href="https://www.janestreet.com/puzzles/current-puzzle/">https://www.janestreet.com/puzzles/current-puzzle/</a>.</p>
+</dd>
+</dl>
 </div>
-<p>credit to <a class="reference external" href="https://gist.github.com/noelboss/3fe13927025b89757f8fb12e9066f2fa">noel boss</a>, the original author of this code. I have made slight modifications to suit my use case. For more information on git hooks, check out the <a class="reference external" href="https://git-scm.com/docs/githooks">documentation</a>, and <a class="reference external" href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">examples</a>.</p>
-<p>In this script, the branch reference from each push is read and compared to the designated deployment branch (“main”). If it matches, the script checks out the branch’s content to the TARGET directory, thus deploying it to the production server. If not, it simply acknowledges the push without any action.</p>
-<p>After the checkout, the script performs an additional task: copying the contents of the HTML folder from the repository to the HTML folder of the NGINX server, thereby updating the website with the latest changes. This script thus aids in automating website updates in a CI/CD pipeline.</p>
-</section>
-<section id="add-remote-repository">
-<h2>3. Add Remote Repository<a class="headerlink" href="#add-remote-repository" title="Permalink to this heading">#</a></h2>
-<p>To incorporate the recently created remote repository, head to your working directory on your local machine and add the remote repository:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="w">     </span>❯<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/working/repository
-<span class="w">     </span>❯<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>production<span class="w"> </span>user@server.com/production/repository.git
-<span class="w">     </span>❯<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>production<span class="w"> </span>main
-</pre></div>
-</div>
-<p>With this setup, each time you push updates from your local working directory to the remote production repository, the post-receive script is triggered. This script can be modified to automate additional tasks like validation, unit testing, and deployment, further streamlining your workflow.</p>
 </section>
 </section>
 
@@ -475,20 +606,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Jane_Street_Puzzle.html"
+       href="Welcome.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Jane Street Grid Puzzle</p>
+        <p class="prev-next-title">Welcome 👋</p>
       </div>
     </a>
     <a class="right-next"
-       href="Git_Verified.html"
+       href="Continuous_Deployment_With_Git.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Git Verified</p>
+        <p class="prev-next-title">CI/CD With Git Hooks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -510,10 +641,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-and-deployment-pipeline-with-git-hooks">Continuous Integration and Deployment Pipeline With Git Hooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-bare-repository">1. Initialize Bare Repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-git-hook">2. Create Git Hook</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-remote-repository">3. Add Remote Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choco-banana">Choco Banana</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-puzzle-instructions">Grid Puzzle Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#puzzle">Puzzle</a></li>
 </ul>
   </nav></div>
 
